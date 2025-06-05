@@ -1,0 +1,20 @@
+    <SearchTooltip
+            content={
+              <div>
+                {/* <PopperWrapper> */}
+                <h4 className={styles.search_title}>Accounts</h4>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+
+                {/* </PopperWrapper> */}
+              </div>
+            }
+          >
+            {/* bọc IconButton làm cho để cho tooltip tự động cấu hình hover vào mới hiện */}
+            <IconButton disableRipple>
+              <span className={styles.more_btn}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </span>
+            </IconButton>
+          </SearchTooltip>

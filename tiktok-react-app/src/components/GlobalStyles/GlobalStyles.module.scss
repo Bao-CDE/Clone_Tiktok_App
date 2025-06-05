@@ -1,0 +1,22 @@
+:root{
+    --default-layout-height: 60px;
+    --default-layout-width: 1150px;
+    --black-color: black;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button, input, [tabindex]{
+    outline: none;
+    border: none;
+}
+
+a[href]{
+    color: #333;
+    text-decoration: none;
+}

@@ -1,0 +1,84 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid transparent;
+  user-select: none; // user ko thể coppy chữ trong ô button
+
+  + .wrapper {
+    margin-left: 10px;
+  }
+
+  &.disable {
+    // cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.2;
+  }
+}
+
+.icon + .title, .title + .icon{
+  margin-left: 8px;
+}
+
+.icon{
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+}
+
+.rounded {
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  border-color: rgba(22, 24, 35, 0.12);
+  &:hover {
+    border-color: rgba(22, 24, 35, 0.2);
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.primary {
+  background-color: #fe2c55;
+  color: white;
+  border-color: #fe2c55;
+
+  &:hover {
+    border-color: #fe2c55;//thay vì di chuyển vị trí khai báo css thì ta cũng có thể dùng !important
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),
+      rgba(235, 77, 77, 0.438);
+  }
+}
+
+.outline {
+  color: #fe2c55;
+  border-color: #fe2c55;
+
+  &:hover {
+    border-color: #fe2c55; //thay vì di chuyển vị trí khai báo css thì ta cũng có thể dùng !important
+    background-color: rgba(255, 185, 185, 0.178);
+  }
+}
+
+.text {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+//Size
+
+.small {
+  min-width: 88px;
+  padding: 4px 16px;
+}
+
+.large {
+  min-width: 147px;
+  padding: 14px 16px;
+}
