@@ -23,6 +23,22 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faGlobe} />,
     title: "English",
+    children: {
+      title: "Languae",
+      data: [
+        
+        {
+          type: "languae",
+          code: "en",
+          title: "English",
+        },
+        {
+          type: "languae",
+          code: "vi",
+          title: "Tiếng Việt",
+        },
+      ],
+    },
   },
 
   {
@@ -44,6 +60,14 @@ function Header() {
   // Xử lý khi input thay đổi để hiển thị/ẩn Tooltip
   const handleInputChange = (e) => {
     setOpen(e.target.value.trim().length > 0); // Hiển thị Tooltip khi có nội dung
+  };
+
+  //Handle
+  const handleMenuChange = (menuItem) => {
+    switch(menuItem.type){
+      case 'languae':
+        
+    }
   };
 
   return (
@@ -93,14 +117,13 @@ function Header() {
           <Button primary>Loggin</Button>
           {/* nếu muốn custom riêng theo một css nào đó thì cứ cho  một cái className */}
 
-
-            <Menu item={MENU_ITEMS}>
-              <IconButton disableRipple>
-                <span className={styles.more_btn}>
-                  <FontAwesomeIcon icon={faEllipsisVertical} />
-                </span>
-              </IconButton>
-            </Menu>
+          <Menu item={MENU_ITEMS} onChange={handleMenuChange}>
+            <IconButton disableRipple>
+              <span className={styles.more_btn}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </span>
+            </IconButton>
+          </Menu>
         </div>
       </div>
     </header>
