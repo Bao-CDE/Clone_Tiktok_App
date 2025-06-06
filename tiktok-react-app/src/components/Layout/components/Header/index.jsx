@@ -1,15 +1,21 @@
 import styles from "./Header.module.scss";
 // import stylesToolTip from "./SearchTooltip.module.scss";
+import style from "./SearchTooltip.module.scss";
+
 import { useState } from "react";
 import SearchTooltip from "./SearchTooltip";
 import { SiTiktok } from "react-icons/si";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleXmark,
+  faCloudUpload,
+  faCoins,
+  faGear,
   faGlobe,
   faKeyboard,
   faMagnifyingGlass,
   faQuestion,
+  faSignOut,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,7 +32,6 @@ const MENU_ITEMS = [
     children: {
       title: "Languae",
       data: [
-        
         {
           type: "languae",
           code: "en",
@@ -43,7 +48,7 @@ const MENU_ITEMS = [
 
   {
     icon: <FontAwesomeIcon icon={faQuestion} />,
-    title: "FeedBank and help",
+    title: "Feedback and help",
     to: "/feedback",
   },
 
@@ -57,6 +62,8 @@ function Header() {
   // State để kiểm soát hiển thị Tooltip
   const [open, setOpen] = useState(false);
 
+  const currentUser = true;
+
   // Xử lý khi input thay đổi để hiển thị/ẩn Tooltip
   const handleInputChange = (e) => {
     setOpen(e.target.value.trim().length > 0); // Hiển thị Tooltip khi có nội dung
@@ -64,11 +71,37 @@ function Header() {
 
   //Handle
   const handleMenuChange = (menuItem) => {
-    switch(menuItem.type){
-      case 'languae':
-        
+    switch (menuItem.type) {
+      case "languae":
+        break;
+      default:
     }
   };
+
+  const userMenu = [
+    {
+      icon: <FontAwesomeIcon icon={faQuestion} />,
+      title: "View profile",
+      to: "/bao",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: "Get coins",
+      to: "/coin",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: "Settings",
+      to: "/settings",
+    },
+    ...MENU_ITEMS,
+
+        {
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: "Log out",
+      to: "/logout",
+    },
+  ];
 
   return (
     <header className={styles.wrapper}>
@@ -112,17 +145,46 @@ function Header() {
         </SearchTooltip>
 
         <div className={styles.action}>
-          {/* ở đây truyền primary thì mới ăn được css của class .primary đc cấu hình trong Button */}
-          <Button text>Upload</Button>
-          <Button primary>Loggin</Button>
-          {/* nếu muốn custom riêng theo một css nào đó thì cứ cho  một cái className */}
+          {currentUser ? (
+            <>
+              <SearchTooltip content="Upload video" placement="bottom">
+                <button>
+                  <FontAwesomeIcon
+                    className={styles.action_btn}
+                    icon={faCloudUpload}
+                  />
+                </button>
+              </SearchTooltip>
+            </>
+          ) : (
+            <>
+              {/* Truyền prop "text" để dùng class .text trong Button */}
+              <Button text>Upload</Button>
 
-          <Menu item={MENU_ITEMS} onChange={handleMenuChange}>
-            <IconButton disableRipple>
-              <span className={styles.more_btn}>
-                <FontAwesomeIcon icon={faEllipsisVertical} />
-              </span>
-            </IconButton>
+              {/* Truyền prop "primary" để dùng class .primary trong Button */}
+              <Button primary>Login</Button>
+
+              {/* Nếu muốn custom riêng thì thêm className vào Button */}
+            </>
+          )}
+
+          <Menu
+            items={currentUser ? userMenu : MENU_ITEMS}
+            onChange={handleMenuChange}
+          >
+            {currentUser ? (
+              <img
+                className={styles.user_avatar}
+                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/e95c19762f6b3e747b9eb91ca44606ac~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=1c9ec239&x-expires=1749384000&x-signature=1gE7tvhvjuTJHqyCyDROcljRcKM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                alt=""
+              />
+            ) : (
+              <IconButton disableRipple>
+                <span className={styles.more_btn}>
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </span>
+              </IconButton>
+            )}
           </Menu>
         </div>
       </div>

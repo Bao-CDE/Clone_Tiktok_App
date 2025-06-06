@@ -8,6 +8,10 @@ function SearchTooltip({
   leaveDelay,
   disableInteractive = false,
   enterDelay,
+  onClose,
+  title,
+  placement,
+  className,
 }) {
   return (
     <Tooltip
@@ -15,8 +19,9 @@ function SearchTooltip({
       enterDelay={enterDelay}
       disableInteractive={disableInteractive}
       leaveDelay={leaveDelay}
-
-
+      onClose={onClose}
+      content={title}
+      placement={placement}
       componentsProps={{
         tooltip: {
           sx: {
@@ -25,7 +30,18 @@ function SearchTooltip({
             // boxShadow: "none",
             pointerEvents: "auto", //auto (mặc định): phần tử sẽ nhận sự kiện chuột như click, hover, v.v.
           },
+          className: className,
         },
+      }}
+      PopperProps={{
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 0], // tooltip sẽ dịch xuống 10px so với vị trí mặc định
+            },
+          },
+        ],
       }}
       title={<div className={styles.tooltipContainer}>{content}</div>}
     >

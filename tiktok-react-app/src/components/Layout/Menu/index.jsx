@@ -5,11 +5,10 @@ import MenuItem from "./Menuitem";
 import Header from "./Header";
 import { useState } from "react";
 
+const defaultFunction = () => {};
 
-const defaultFunction = ()=>{}
-
-function Menu({ children, item = [], onChange = defaultFunction}) {
-  const [history, setHistory] = useState([{ data: item }]);
+function Menu({ children, items = [], onChange = defaultFunction }) {
+  const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
 
   // console.log(currentMenu.data); //kiểm tra đọc đi sẽ hiểu
@@ -28,8 +27,8 @@ function Menu({ children, item = [], onChange = defaultFunction}) {
           onClick={() => {
             if (isParent) {
               setHistory((prev) => [...prev, items.children]);
-            } else{
-              onChange(items)
+            } else {
+              onChange(items);
             }
           }}
         />
@@ -38,7 +37,7 @@ function Menu({ children, item = [], onChange = defaultFunction}) {
   };
   return (
     <SearchTooltip
-      leaveDelay={500}
+      leaveDelay={50}
       content={
         <div>
           {/* <PopperWrapper> */}
@@ -58,6 +57,12 @@ function Menu({ children, item = [], onChange = defaultFunction}) {
           {/* </PopperWrapper> */}
         </div>
       }
+      //onClose là một tùy biến của Tooltip giúp Tooltip, hàm xử lý logic giúp khi buông hover ra khỏi menu sẽ tự động quay lại menu cấp 1
+      onClose={() => {
+        setTimeout(() => {
+          setHistory((prev) => prev.slice(0, 1));
+        }, 300);
+      }}
     >
       {children}
     </SearchTooltip>
