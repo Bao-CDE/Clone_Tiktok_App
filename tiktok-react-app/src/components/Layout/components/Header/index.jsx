@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 // import stylesToolTip from "./SearchTooltip.module.scss";
-import style from "./SearchTooltip.module.scss";
+
 
 import { useState } from "react";
 import SearchTooltip from "./SearchTooltip";
@@ -17,11 +17,14 @@ import {
   faQuestion,
   faSignOut,
   faSpinner,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../../button";
 import AccountItem from "../../../AccountItem";
 import Menu from "../../Menu";
+import Image from "../../../Image";
+
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons/faEllipsisVertical";
 import { IconButton, Tooltip } from "@mui/material";
 
@@ -80,7 +83,7 @@ function Header() {
 
   const userMenu = [
     {
-      icon: <FontAwesomeIcon icon={faQuestion} />,
+      icon: <FontAwesomeIcon icon={faUser} />,
       title: "View profile",
       to: "/bao",
     },
@@ -173,10 +176,11 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 className={styles.user_avatar}
                 src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/e95c19762f6b3e747b9eb91ca44606ac~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=1c9ec239&x-expires=1749384000&x-signature=1gE7tvhvjuTJHqyCyDROcljRcKM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
-                alt=""
+                
+                // fallBack={}
               />
             ) : (
               <IconButton disableRipple>
