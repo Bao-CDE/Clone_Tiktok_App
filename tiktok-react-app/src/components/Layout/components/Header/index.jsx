@@ -2,21 +2,22 @@ import styles from "./Header.module.scss";
 // import stylesToolTip from "./SearchTooltip.module.scss";
 
 
-import { useState } from "react";
 import SearchTooltip from "./SearchTooltip";
 import { SiTiktok } from "react-icons/si";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleXmark,
+
   faCloudUpload,
   faCoins,
+  faEnvelope,
   faGear,
   faGlobe,
   faKeyboard,
-  faMagnifyingGlass,
+
+  faPaperPlane,
   faQuestion,
   faSignOut,
-  faSpinner,
+
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +25,8 @@ import Button from "../../../button";
 import AccountItem from "../../../AccountItem";
 import Menu from "../../Menu";
 import Image from "../../../Image";
+import Search from "../Search/";
+
 
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons/faEllipsisVertical";
 import { IconButton, Tooltip } from "@mui/material";
@@ -63,14 +66,12 @@ const MENU_ITEMS = [
 
 function Header() {
   // State để kiểm soát hiển thị Tooltip
-  const [open, setOpen] = useState(false);
+
 
   const currentUser = true;
 
   // Xử lý khi input thay đổi để hiển thị/ẩn Tooltip
-  const handleInputChange = (e) => {
-    setOpen(e.target.value.trim().length > 0); // Hiển thị Tooltip khi có nội dung
-  };
+
 
   //Handle
   const handleMenuChange = (menuItem) => {
@@ -99,7 +100,7 @@ function Header() {
     },
     ...MENU_ITEMS,
 
-        {
+    {
       icon: <FontAwesomeIcon icon={faSignOut} />,
       title: "Log out",
       to: "/logout",
@@ -115,37 +116,7 @@ function Header() {
           <span style={{ fontSize: "30px", fontWeight: "bold" }}>TikTok</span>
         </div>
 
-        {/* Tooltip hiển thị kết quả tìm kiếm */}
-        <SearchTooltip
-          open={open}
-          content={
-            <div className={styles.search_result}>
-              {/* <PopperWrapper> */}
-              <h4 className={styles.search_title}>Accounts</h4>
-              <AccountItem />
-              <AccountItem />
-              <AccountItem />
-
-              {/* </PopperWrapper> */}
-            </div>
-          }
-        >
-          <div className={styles.search}>
-            <input
-              type="text"
-              placeholder="Search accounts and videos"
-              spellCheck={false}
-              onChange={handleInputChange}
-            />
-            <button className={styles.clear_btn}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={styles.loading} icon={faSpinner} />
-            <button className={styles.search_btn}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </SearchTooltip>
+        <Search/>
 
         <div className={styles.action}>
           {currentUser ? (
@@ -155,6 +126,22 @@ function Header() {
                   <FontAwesomeIcon
                     className={styles.action_btn}
                     icon={faCloudUpload}
+                  />
+                </button>
+              </SearchTooltip>
+              <SearchTooltip content="Send" placement="bottom">
+                <button>
+                  <FontAwesomeIcon
+                    className={styles.action_btn}
+                    icon={faPaperPlane}
+                  />
+                </button>
+              </SearchTooltip>
+              <SearchTooltip content="Message" placement="bottom">
+                <button>
+                  <FontAwesomeIcon
+                    className={styles.action_btn}
+                    icon={faEnvelope}
                   />
                 </button>
               </SearchTooltip>
@@ -179,7 +166,7 @@ function Header() {
               <Image
                 className={styles.user_avatar}
                 src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/e95c19762f6b3e747b9eb91ca44606ac~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=1c9ec239&x-expires=1749384000&x-signature=1gE7tvhvjuTJHqyCyDROcljRcKM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
-                
+
                 // fallBack={}
               />
             ) : (

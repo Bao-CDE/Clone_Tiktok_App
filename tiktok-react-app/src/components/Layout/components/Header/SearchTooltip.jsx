@@ -1,6 +1,7 @@
 import styles from "./SearchTooltip.module.scss";
 import Tooltip from "@mui/material/Tooltip";
 
+
 function SearchTooltip({
   open,
   children,
@@ -12,7 +13,12 @@ function SearchTooltip({
   title,
   placement,
   className,
+  onFocus,
 }) {
+  
+
+
+
   return (
     <Tooltip
       open={open}
@@ -22,6 +28,7 @@ function SearchTooltip({
       onClose={onClose}
       content={title}
       placement={placement}
+      onFocus={onFocus}
       componentsProps={{
         tooltip: {
           sx: {
