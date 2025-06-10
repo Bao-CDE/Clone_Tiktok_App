@@ -1,6 +1,8 @@
 import routesConfig from "../config/routes";
 
 
+//Layouts
+
 import { HeaderOnly } from "../components/Layout";
 import Search from "../page/Search";
 
@@ -16,4 +18,3 @@ export const routes = [
   { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
   { path: routesConfig.search, component: Search, layout: null },
 ];
-

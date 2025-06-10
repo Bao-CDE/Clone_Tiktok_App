@@ -1,6 +1,5 @@
 import SearchTooltip from "../components/Header/SearchTooltip";
 import styles from "./Menu.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MenuItem from "./Menuitem";
 import Header from "./Header";
 import { useState } from "react";
@@ -37,7 +36,7 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
   };
   return (
     <SearchTooltip
-      leaveDelay={50}
+      delay={100}
       content={
         <div>
           {/* <PopperWrapper> */}
@@ -51,7 +50,7 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
                 }}
               ></Header>
             )}
-            {renderItems()}
+            <div className={styles.menu_scroll}>{renderItems()}</div>
           </div>
 
           {/* </PopperWrapper> */}

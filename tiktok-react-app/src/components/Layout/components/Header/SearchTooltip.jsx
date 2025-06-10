@@ -1,13 +1,19 @@
 import TippyHeadless from "@tippyjs/react/headless";
 import styles from "./SearchTooltip.module.scss";
 
-function SearchTooltip({ children, content, visible, onClickOutside, hideOnClick = false }) {
+function SearchTooltip({
+  children,
+  content,
+  visible,
+  onClickOutside,
+  delay,
+}) {
   return (
     <TippyHeadless
+      delay={delay}
       interactive
       visible={visible}
       placement="bottom"
-      hideOnClick = {hideOnClick}
       popperOptions={{
         modifiers: [
           {

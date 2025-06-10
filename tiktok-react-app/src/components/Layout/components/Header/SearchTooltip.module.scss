@@ -3,12 +3,12 @@
 .tooltipContainer {
   color: #333;
   font-size: 14px;
+  font-family: sans-serif;
   border-radius: 6px;
   padding: 10px 14px;
   //   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
-  font-family: sans-serif;
 }
 .loading_icon {
   position: absolute;
@@ -18,25 +18,5 @@
   color: #888;
   font-size: 18px;
   pointer-events: none;
-}
-
-.toolTip_container_menu {
-  width: 190px;
-}
-
-.MuiTooltip-arrow {
-  display: none !important;
-}
-
-.MuiTooltip-popper {
-  background: transparent;
-}
-
-.MuiTooltip-popper {
-  display: none !important;
-}
-
-._tooltipContainer {
-  display: none !important;
 }
 

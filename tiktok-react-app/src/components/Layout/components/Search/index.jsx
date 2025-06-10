@@ -21,7 +21,7 @@ function Search() {
   const [loading, setLoading] = useState(false);
 
   // custom hooks trong file hooks tránh gọi API liên tục
-  const debounce = useDebounce(search, 800);
+  const debounce = useDebounce(search, 600);
 
   const inputRef = useRef();
 
@@ -52,7 +52,6 @@ function Search() {
   const handleHideResult = () => {
     setShowResult(false);
   };
-
 
   return (
     <div>
