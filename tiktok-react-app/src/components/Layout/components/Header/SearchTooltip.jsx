@@ -1,60 +1,32 @@
+import TippyHeadless from "@tippyjs/react/headless";
 import styles from "./SearchTooltip.module.scss";
-import Tooltip from "@mui/material/Tooltip";
 
-
-function SearchTooltip({
-  open,
-  children,
-  content,
-  leaveDelay,
-  disableInteractive = false,
-  enterDelay,
-  onClose,
-  title,
-  placement,
-  className,
-  onFocus,
-}) {
-  
-
-
-
+function SearchTooltip({ children, content, visible, onClickOutside, hideOnClick = false }) {
   return (
-    <Tooltip
-      open={open}
-      enterDelay={enterDelay}
-      disableInteractive={disableInteractive}
-      leaveDelay={leaveDelay}
-      onClose={onClose}
-      content={title}
-      placement={placement}
-      onFocus={onFocus}
-      componentsProps={{
-        tooltip: {
-          sx: {
-            backgroundColor: "transparent", // để custom bằng SCSS
-            // padding: 0,
-            // boxShadow: "none",
-            pointerEvents: "auto", //auto (mặc định): phần tử sẽ nhận sự kiện chuột như click, hover, v.v.
-          },
-          className: className,
-        },
-      }}
-      PopperProps={{
+    <TippyHeadless
+      interactive
+      visible={visible}
+      placement="bottom"
+      hideOnClick = {hideOnClick}
+      popperOptions={{
         modifiers: [
           {
             name: "offset",
             options: {
-              offset: [0, 0], // tooltip sẽ dịch xuống 10px so với vị trí mặc định
+              offset: [0, 10], // [X, Y]
             },
           },
         ],
       }}
-      title={<div className={styles.tooltipContainer}>{content}</div>}
+      render={(attrs) => (
+        <div className={styles.tooltipContainer} tabIndex="-1" {...attrs}>
+          {content}
+        </div>
+      )}
+      onClickOutside={onClickOutside}
     >
-      {/* Ô input/search box */}
-      <div className={styles.trigger}>{children}</div>
-    </Tooltip>
+      {children}
+    </TippyHeadless>
   );
 }
 

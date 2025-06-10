@@ -1,23 +1,21 @@
 import styles from "./Header.module.scss";
 // import stylesToolTip from "./SearchTooltip.module.scss";
 
-
 import SearchTooltip from "./SearchTooltip";
+import routesConfig from "../../../../config/routes";
+import { Link } from "react-router-dom";
 import { SiTiktok } from "react-icons/si";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-
   faCloudUpload,
   faCoins,
   faEnvelope,
   faGear,
   faGlobe,
   faKeyboard,
-
   faPaperPlane,
   faQuestion,
   faSignOut,
-
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -26,7 +24,6 @@ import AccountItem from "../../../AccountItem";
 import Menu from "../../Menu";
 import Image from "../../../Image";
 import Search from "../Search/";
-
 
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons/faEllipsisVertical";
 import { IconButton, Tooltip } from "@mui/material";
@@ -67,11 +64,9 @@ const MENU_ITEMS = [
 function Header() {
   // State để kiểm soát hiển thị Tooltip
 
-
   const currentUser = true;
 
   // Xử lý khi input thay đổi để hiển thị/ẩn Tooltip
-
 
   //Handle
   const handleMenuChange = (menuItem) => {
@@ -106,17 +101,19 @@ function Header() {
       to: "/logout",
     },
   ];
-
   return (
     <header className={styles.wrapper}>
       <div className={styles.content}>
         {/* Logo */}
         <div className={styles.logo}>
-          <SiTiktok size={32} color="#000" />
-          <span style={{ fontSize: "30px", fontWeight: "bold" }}>TikTok</span>
+          {/* routesConfig cấu hình riêng */}
+          <Link to={routesConfig.home}>
+            <SiTiktok size={32} color="#000" />
+            <span style={{ fontSize: "30px", fontWeight: "bold" }}>TikTok</span>
+          </Link>
         </div>
 
-        <Search/>
+        <Search />
 
         <div className={styles.action}>
           {currentUser ? (

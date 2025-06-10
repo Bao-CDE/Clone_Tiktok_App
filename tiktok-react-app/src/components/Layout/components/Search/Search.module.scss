@@ -1,3 +1,6 @@
+.search{
+  position: relative;
+}
 .search,
 .search_result {
   width: 361px;
@@ -49,7 +52,7 @@
 }
 
 .clear_btn,
-.loading {
+.loading_icon {
   position: absolute;
   right: 60px;
   top: 50%;

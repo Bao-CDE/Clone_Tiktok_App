@@ -1,3 +1,5 @@
+
+
 .tooltipContainer {
   color: #333;
   font-size: 14px;
@@ -6,6 +8,16 @@
   //   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+}
+.loading_icon {
+  position: absolute;
+  right: 48px; // hoặc điều chỉnh lại cho phù hợp với layout của bạn
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+  pointer-events: none;
 }
 
 .toolTip_container_menu {
@@ -27,3 +39,4 @@
 ._tooltipContainer {
   display: none !important;
 }
+
