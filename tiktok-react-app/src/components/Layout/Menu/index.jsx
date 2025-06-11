@@ -36,7 +36,8 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
   };
   return (
     <SearchTooltip
-      delay={100}
+      
+      delay={500}
       content={
         <div>
           {/* <PopperWrapper> */}
@@ -56,11 +57,8 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
           {/* </PopperWrapper> */}
         </div>
       }
-      //onClose là một tùy biến của Tooltip giúp Tooltip, hàm xử lý logic giúp khi buông hover ra khỏi menu sẽ tự động quay lại menu cấp 1
-      onClose={() => {
-        setTimeout(() => {
-          setHistory((prev) => prev.slice(0, 1));
-        }, 300);
+      onHide={() => {
+        setHistory((prev) => prev.slice(0, 1));
       }}
     >
       {children}

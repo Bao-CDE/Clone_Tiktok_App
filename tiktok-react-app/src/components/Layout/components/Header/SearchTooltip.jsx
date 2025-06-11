@@ -5,8 +5,9 @@ function SearchTooltip({
   children,
   content,
   visible,
-  onClickOutside,
   delay,
+  onHide,
+  onClickOutside,
 }) {
   return (
     <TippyHeadless
@@ -14,6 +15,8 @@ function SearchTooltip({
       interactive
       visible={visible}
       placement="bottom"
+      onClickOutside={onClickOutside}
+      onHide={onHide}
       popperOptions={{
         modifiers: [
           {
@@ -25,11 +28,15 @@ function SearchTooltip({
         ],
       }}
       render={(attrs) => (
-        <div className={styles.tooltipContainer} tabIndex="-1" {...attrs}>
+        <div
+          className={styles.tooltipContainer}
+          tabIndex="-1"
+          {...attrs}
+          onClick={(e) => e.stopPropagation()}
+        >
           {content}
         </div>
       )}
-      onClickOutside={onClickOutside}
     >
       {children}
     </TippyHeadless>
