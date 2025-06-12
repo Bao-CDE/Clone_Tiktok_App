@@ -1,24 +1,24 @@
-:root{
-    --default-layout-height: 60px;
-    --default-layout-width: 1150px;
-    --black-color: black;
+:root {
+  --default-layout-height: 60px;
+  --default-layout-width: 1150px;
+  --black-color: black;
 }
-
-
-
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-button, input, [tabindex]{
-    outline: none;
-    border: none;
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
 }
 
-a{
-    color: #333;
-    text-decoration: none;
+a {
+  color: #333;
+  text-decoration: none;
 }

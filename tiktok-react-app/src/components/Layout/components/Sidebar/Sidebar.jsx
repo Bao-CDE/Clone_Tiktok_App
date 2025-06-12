@@ -5,6 +5,7 @@ import MenuItem from "./Menu/MenuItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {  faHouse, faUsers, faVideo } from "@fortawesome/free-solid-svg-icons";
+import SuggestedAccount from "../../../SuggestedAccount/SuggestedAccount";
 
 function SideBar() {
   return (
@@ -15,6 +16,8 @@ function SideBar() {
           <MenuItem title="Following" to={routes.following} icon={faUsers} />
           <MenuItem title="LIVE" to={routes.live} icon={faVideo} />
       </Menu>
+      <SuggestedAccount label="Suggested accounts"/>
+      <SuggestedAccount label="Following accounts"/>
     </aside>
   );
 }

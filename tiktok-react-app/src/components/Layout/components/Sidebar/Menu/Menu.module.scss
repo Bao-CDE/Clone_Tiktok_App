@@ -1,9 +1,10 @@
 .menu_item {
+
   display: flex;
   align-items: center;
   font-size: 1.1rem;
-  font-weight: 700;
-  padding: 8px;
+  font-weight: 600;
+  padding: 10px;
   transition: background-color ease-in-out 100ms;
   &.active {
     color: rgba(254, 44, 85, 1);
