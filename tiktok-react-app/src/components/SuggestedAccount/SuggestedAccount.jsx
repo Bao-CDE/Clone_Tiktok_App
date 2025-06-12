@@ -8,6 +8,9 @@ function SuggestedAccount({label}) {
             <AccountItem/>
             <AccountItem/>
             <AccountItem/>
+            <AccountItem/>
+            <AccountItem/>
+
             <p className={styles.see_all_btn}>See all</p>
         </div>
      );

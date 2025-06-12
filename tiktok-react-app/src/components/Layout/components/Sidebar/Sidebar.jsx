@@ -17,7 +17,7 @@ function SideBar() {
           <MenuItem title="LIVE" to={routes.live} icon={faVideo} />
       </Menu>
       <SuggestedAccount label="Suggested accounts"/>
-      <SuggestedAccount label="Following accounts"/>
+      {/* <SuggestedAccount label="Following accounts"/> */}
     </aside>
   );
 }
