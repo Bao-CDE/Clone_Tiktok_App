@@ -61,7 +61,7 @@ const MENU_ITEMS = [
   },
 ];
 
-function Header() {
+function Header({ onLogout }) {
   // State để kiểm soát hiển thị Tooltip
 
   const currentUser = true;
@@ -70,6 +70,10 @@ function Header() {
 
   //Handle
   const handleMenuChange = (menuItem) => {
+    if (menuItem.title === "Log out" && onLogout) {
+      onLogout();
+      return;
+    }
     switch (menuItem.type) {
       case "languae":
         break;

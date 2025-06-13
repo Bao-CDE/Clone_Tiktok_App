@@ -1,9 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { routes } from "./routes/routes.jsx";
-import DeafaultLayout from './components/Layout/index.jsx'
+import DeafaultLayout from "./components/Layout/index.jsx";
 import { Fragment } from "react";
+import React, { useState, useEffect } from "react";
+import LoginForm from "./components/Login/LoginForm.jsx";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
+  }, []);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+
+  if (!isLoggedIn) {
+    return <LoginForm onLogin={handleLogin} />;
+  }
+
   return (
     <>
       <Router>
@@ -17,26 +38,22 @@ function App() {
 
               let Layout = DeafaultLayout;
 
-              if(route.layout){
-                Layout = route.layout
-                
-              } else if(route.layout === null){
-                Layout = Fragment
+              if (route.layout) {
+                Layout = route.layout;
+              } else if (route.layout === null) {
+                Layout = Fragment;
               }
-
 
               // nếu không có layout thì mặc định sẽ lấy DeafaultLayOut
               // còn nếu có sẽ lấy là Fragment là một thẻ ko chứa gì hết nhưng vẫn hiện nội dung khác với thẻ "<> </>"
               // const Layout = route.layout === null ? Fragment: DeafaultLayout;
-
 
               return (
                 <Route
                   key={index}
                   path={route.path}
                   element={
-                    //ta cho Layout khai báo ở trên ôm phần Page, thì Page sẽ là {children} đã được tạo trong "./components/Layout/DefaultLayout", cho nên nó sẽ là layout mặc định có header và side bar khi ta ko cấu hình route.layout
-                    <Layout>
+                    <Layout onLogout={handleLogout}>
                       <Page />
                     </Layout>
                   }
