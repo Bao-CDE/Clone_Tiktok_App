@@ -7,24 +7,22 @@ import {
 import { routes } from "./routes/routes.jsx";
 import DefaultLayout from "./components/Layout/index.jsx";
 import { Fragment } from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import LoginForm from "./components/Login/LoginForm.jsx";
 
 function AppContent() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const navigate = useNavigate();
 
-
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   const handleLogin = () => {
     setIsLoggedIn(true);
     navigate("/");
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
   if (!isLoggedIn) {
     return <LoginForm onLogin={handleLogin} />;
   }
