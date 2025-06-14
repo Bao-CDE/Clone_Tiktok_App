@@ -5,30 +5,26 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { routes } from "./routes/routes.jsx";
-import DeafaultLayout from "./components/Layout/index.jsx";
+import DefaultLayout from "./components/Layout/index.jsx";
 import { Fragment } from "react";
 import React, { useState, useEffect } from "react";
 import LoginForm from "./components/Login/LoginForm.jsx";
 
 function AppContent() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
-  }, []);
+
 
   const handleLogin = () => {
-    localStorage.setItem("isLoggedIn", "true");
     setIsLoggedIn(true);
     navigate("/");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
   };
-
   if (!isLoggedIn) {
     return <LoginForm onLogin={handleLogin} />;
   }
@@ -38,7 +34,7 @@ function AppContent() {
       <Routes>
         {routes.map((route, index) => {
           const Page = route.component;
-          let Layout = DeafaultLayout;
+          let Layout = DefaultLayout;
 
           if (route.layout) {
             Layout = route.layout;
@@ -51,7 +47,7 @@ function AppContent() {
               key={index}
               path={route.path}
               element={
-                <Layout onLogout={handleLogout}>
+                <Layout onLogout={handleLogout} currentUser={isLoggedIn}>
                   <Page />
                 </Layout>
               }

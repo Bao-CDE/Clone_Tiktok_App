@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../Button/index";
+import Button from '../Button/index'
 import styles from "./LoginForm.module.scss";
 
 function LoginForm({ onLogin }) {
