@@ -11,6 +11,7 @@ import {
 function Home() {
   const [videos, setVideos] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [likes, setLikes] = useState({});
   const videoRefs = useRef([]);
 
   useEffect(() => {
@@ -55,6 +56,13 @@ function Home() {
     }
   };
 
+  const handleLike = (videoId) => {
+    setLikes((prev) => ({
+      ...prev,
+      [videoId]: !prev[videoId],
+    }));
+  };
+
   return (
     <div className={styles.container} onScroll={handleScroll}>
       {videos.map((video, index) => (
@@ -86,9 +94,14 @@ function Home() {
                 </div>
               </div>
               <div className={styles.actions}>
-                <div className={styles.action}>
+                <div
+                  className={`${styles.action} ${
+                    likes[video.id] ? styles.liked : ""
+                  }`}
+                  onClick={() => handleLike(video.id)}
+                >
                   <FontAwesomeIcon icon={faHeart} />
-                  <span>0</span>
+                  <span>{likes[video.id] ? "666" : "0"}</span>
                 </div>
                 <div className={styles.action}>
                   <FontAwesomeIcon icon={faComment} />

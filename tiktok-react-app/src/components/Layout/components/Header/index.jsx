@@ -70,14 +70,15 @@ function Header({ onLogout }) {
 
   //Handle
   const handleMenuChange = (menuItem) => {
-    if (menuItem.title === "Log out" && onLogout) {
-      onLogout();
-      return;
-    }
     switch (menuItem.type) {
       case "languae":
         break;
       default:
+        if (menuItem.title === "Log out") {
+          onLogout();
+        } else if (menuItem.to) {
+          window.location.href = menuItem.to;
+        }
     }
   };
 
