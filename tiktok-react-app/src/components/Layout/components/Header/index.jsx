@@ -27,7 +27,6 @@ import Search from "../Search/";
 import LoginForm from "../../../Login/LoginForm";
 import SideBar from "../Sidebar/Sidebar";
 
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons/faEllipsisVertical";
 import { IconButton, Tooltip } from "@mui/material";
 
 const MENU_ITEMS = [
