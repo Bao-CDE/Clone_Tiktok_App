@@ -4,7 +4,7 @@ import styles from "./SuggestedAccount.module.scss";
 import TippyHeadless from "@tippyjs/react/headless";
 import Button from "../Button";
 
-function AccountItem() {
+function AccountItem({ nickname, name }) {
   const renderResult = (props) => {
     return (
       <div tabIndex="-1" {...props}>
@@ -21,10 +21,10 @@ function AccountItem() {
           </header>
           <div className={styles.body_item}>
             <p className={styles.nickname_item}>
-              <strong>Baooooooo</strong>
+              <strong>{nickname}</strong>
               <FontAwesomeIcon className={styles.check} icon={faCircleCheck} />
             </p>
-            <p className={styles.name_item}>Nguyễn Bảo</p>
+            <p className={styles.name_item}>{name}</p>
             <p className={styles.follow_like}>
               <strong className={styles.count_value}>9.9m</strong>
               <span className={styles.label}>Followers</span>
@@ -53,10 +53,10 @@ function AccountItem() {
           />
           <div className={styles.item_infor}>
             <p className={styles.nickname}>
-              <strong>Baooooooo</strong>
+              <strong>{nickname}</strong>
               <FontAwesomeIcon className={styles.check} icon={faCircleCheck} />
             </p>
-            <p className={styles.name}>Nguyễn Bảo</p>
+            <p className={styles.name}>{name}</p>
           </div>
         </div>
       </TippyHeadless>
