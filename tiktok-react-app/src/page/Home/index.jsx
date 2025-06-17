@@ -33,7 +33,6 @@ function Home() {
       }
     });
   }, [currentVideoIndex]);
-
   const handleScroll = (e) => {
     const container = e.target;
     const scrollPosition = container.scrollTop;
